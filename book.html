@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Book Itinerary – Bookingin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-main">Bookingin</span>
+          <span class="brand-sub">for Holidaysify™</span>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="#" id="itinerary-link" class="nav-link">Itinerary</a>
+          <a href="#" class="nav-link is-active">Book now</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container booking-layout">
+          <div>
+            <p class="eyebrow">Booking enquiry</p>
+            <h1 id="itinerary-title">Book Your Itinerary</h1>
+            <p class="section-lead">
+              Please complete the form below to submit a booking request for
+              this itinerary. A consultant can then follow up with you to
+              confirm cabin options, pricing and availability.
+            </p>
+
+            <div class="trip-summary">
+              <h2>Trip summary</h2>
+              <dl>
+                <div class="trip-summary-row">
+                  <dt>Itinerary</dt>
+                  <dd id="trip-name-display">Loading...</dd>
+                </div>
+                <div class="trip-summary-row">
+                  <dt>Travel window</dt>
+                  <dd id="travel-window-display">Subject to availability</dd>
+                </div>
+                <div class="trip-summary-row">
+                  <dt>Provider</dt>
+                  <dd>Holidaysify™ – Travel Specialists</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <div>
+            <form id="booking-form" novalidate>
+              <div class="field">
+                <label for="itinerary-select">Choose Itinerary</label>
+                <select
+                  id="itinerary-select"
+                  name="itinerarySelect"
+                  required
+                >
+                  <option value="">Select an itinerary...</option>
+                </select>
+                <input
+                  id="trip-name"
+                  name="tripName"
+                  type="hidden"
+                  value=""
+                />
+                <p class="field-error" data-error-for="itinerary-select"></p>
+              </div>
+
+              <div class="field-grid">
+                <div class="field">
+                  <label for="first-name">First name</label>
+                  <input
+                    id="first-name"
+                    name="firstName"
+                    type="text"
+                    autocomplete="given-name"
+                    required
+                  />
+                  <p class="field-error" data-error-for="first-name"></p>
+                </div>
+                <div class="field">
+                  <label for="last-name">Last name</label>
+                  <input
+                    id="last-name"
+                    name="lastName"
+                    type="text"
+                    autocomplete="family-name"
+                    required
+                  />
+                  <p class="field-error" data-error-for="last-name"></p>
+                </div>
+              </div>
+
+              <div class="field-grid">
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                  />
+                  <p class="field-error" data-error-for="email"></p>
+                </div>
+                <div class="field">
+                  <label for="phone">Phone (including country code)</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    autocomplete="tel"
+                  />
+                </div>
+              </div>
+
+
+              <div class="field">
+                <label for="notes">Additional information</label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="4"
+                  placeholder="Tell us about any special occasions, mobility needs, or preferred airlines."
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full-width">
+                Pay deposit
+              </button>
+
+              <p class="smallprint">
+                This is a booking enquiry only. A consultant will confirm final
+                pricing, availability, and payment details with you directly.
+              </p>
+
+              <div id="booking-success" class="booking-success" hidden>
+                <h2>Thank you – enquiry received</h2>
+                <p>
+                  Your booking enquiry for
+                  <strong id="success-itinerary-name"></strong> has been
+                  captured. You can safely close this page or continue browsing.
+                </p>
+                <p class="smallprint">
+                  Tip: to integrate this with a real backend later, send the
+                  form data from <code>scripts.js</code> to your API or CRM.
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© 2026 Bookingin</span>
+        <span
+          >Itinerary branding and details based on Holidaysify™ promotions.</span
+        >
+      </div>
+    </footer>
+
+    <script>
+      // Get itinerary ID from URL parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const itineraryId = urlParams.get('id') || '';
+      
+      let allItineraries = [];
+      
+      // Function to update form with selected itinerary
+      function updateFormWithItinerary(itinerary) {
+        document.getElementById('itinerary-title').textContent = 'Book ' + itinerary.name;
+        document.getElementById('trip-name').value = itinerary.name;
+        document.getElementById('trip-name-display').textContent = itinerary.name;
+        document.getElementById('travel-window-display').textContent = itinerary.travelWindow;
+        document.getElementById('success-itinerary-name').textContent = itinerary.name;
+        document.title = 'Book ' + itinerary.name + ' – Bookingin';
+        
+        // Update navigation link
+        const itineraryLink = document.getElementById('itinerary-link');
+        itineraryLink.href = `itinerary-viewer.html?id=${itinerary.id}`;
+        itineraryLink.textContent = itinerary.name;
+      }
+      
+      // Load itineraries configuration
+      fetch('itineraries.json')
+        .then(response => response.json())
+        .then(data => {
+          allItineraries = data.itineraries;
+          
+          // Populate dropdown
+          const select = document.getElementById('itinerary-select');
+          data.itineraries.forEach(itinerary => {
+            const option = document.createElement('option');
+            option.value = itinerary.id;
+            option.textContent = itinerary.name;
+            select.appendChild(option);
+          });
+          
+          // Set selected itinerary from URL or default
+          let selectedItinerary;
+          if (itineraryId) {
+            selectedItinerary = data.itineraries.find(item => item.id === itineraryId);
+          }
+          if (!selectedItinerary) {
+            selectedItinerary = data.itineraries[0]; // Default to first
+          }
+          
+          // Set dropdown value
+          select.value = selectedItinerary.id;
+          
+          // Update form with selected itinerary
+          updateFormWithItinerary(selectedItinerary);
+          
+          // Handle dropdown change
+          select.addEventListener('change', function() {
+            const selectedId = this.value;
+            if (selectedId) {
+              const selected = data.itineraries.find(item => item.id === selectedId);
+              if (selected) {
+                updateFormWithItinerary(selected);
+              }
+            }
+          });
+        })
+        .catch(error => {
+          console.error('Error loading itinerary:', error);
+          // Fallback
+          document.getElementById('trip-name').value = 'Mediterranean Marvels – Web Promo';
+          document.getElementById('trip-name-display').textContent = 'Mediterranean Marvels – Web Promo';
+          document.getElementById('itinerary-link').href = 'itinerary-mediterranean.html';
+        });
+    </script>
+    <script src="scripts.js"></script>
+  </body>
+</html>
+

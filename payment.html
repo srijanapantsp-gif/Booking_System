@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Payment – Bookingin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-main">Bookingin</span>
+          <span class="brand-sub">for Holidaysify™</span>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="#" id="itinerary-link" class="nav-link">Itinerary</a>
+          <a href="#" class="nav-link is-active">Payment</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container booking-layout">
+          <div>
+            <p class="eyebrow">Payment</p>
+            <h1 id="payment-title">Complete Your Deposit Payment</h1>
+            <p class="section-lead">
+              Please enter your payment details below to secure your booking deposit.
+            </p>
+
+            <div class="trip-summary">
+              <h2>Booking Summary</h2>
+              <dl>
+                <div class="trip-summary-row">
+                  <dt>Itinerary</dt>
+                  <dd id="summary-itinerary">Loading...</dd>
+                </div>
+                <div class="trip-summary-row">
+                  <dt>Travel window</dt>
+                  <dd id="summary-travel-window">Subject to availability</dd>
+                </div>
+                <div class="trip-summary-row">
+                  <dt>Name</dt>
+                  <dd id="summary-name">-</dd>
+                </div>
+                <div class="trip-summary-row">
+                  <dt>Email</dt>
+                  <dd id="summary-email">-</dd>
+                </div>
+                <div class="trip-summary-row">
+                  <dt>Phone</dt>
+                  <dd id="summary-phone">-</dd>
+                </div>
+                <div class="trip-summary-row">
+                  <dt>Deposit Amount</dt>
+                  <dd id="summary-deposit" style="font-weight: 700; color: #22c55e; font-size: 1.1rem;">$500.00 AUD</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <div>
+            <form id="payment-form" novalidate>
+              <h2 style="margin-top: 0; margin-bottom: 1rem;">Payment Details</h2>
+              
+              <div class="field">
+                <label for="card-number">Card Number</label>
+                <input
+                  id="card-number"
+                  name="cardNumber"
+                  type="text"
+                  placeholder="1234 5678 9012 3456"
+                  maxlength="19"
+                  required
+                />
+                <p class="field-error" data-error-for="card-number"></p>
+              </div>
+
+              <div class="field-grid">
+                <div class="field">
+                  <label for="expiry-date">Expiry Date</label>
+                  <input
+                    id="expiry-date"
+                    name="expiryDate"
+                    type="text"
+                    placeholder="MM/YY"
+                    maxlength="5"
+                    required
+                  />
+                  <p class="field-error" data-error-for="expiry-date"></p>
+                </div>
+                <div class="field">
+                  <label for="cvv">CVV</label>
+                  <input
+                    id="cvv"
+                    name="cvv"
+                    type="text"
+                    placeholder="123"
+                    maxlength="4"
+                    required
+                  />
+                  <p class="field-error" data-error-for="cvv"></p>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="card-name">Cardholder Name</label>
+                <input
+                  id="card-name"
+                  name="cardName"
+                  type="text"
+                  placeholder="John Doe"
+                  required
+                />
+                <p class="field-error" data-error-for="card-name"></p>
+              </div>
+
+              <div class="field">
+                <label for="billing-address">Billing Address</label>
+                <input
+                  id="billing-address"
+                  name="billingAddress"
+                  type="text"
+                  placeholder="Street address"
+                  required
+                />
+                <p class="field-error" data-error-for="billing-address"></p>
+              </div>
+
+              <div class="field-grid">
+                <div class="field">
+                  <label for="city">City</label>
+                  <input
+                    id="city"
+                    name="city"
+                    type="text"
+                    required
+                  />
+                  <p class="field-error" data-error-for="city"></p>
+                </div>
+                <div class="field">
+                  <label for="postcode">Postcode</label>
+                  <input
+                    id="postcode"
+                    name="postcode"
+                    type="text"
+                    required
+                  />
+                  <p class="field-error" data-error-for="postcode"></p>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="country">Country</label>
+                <select id="country" name="country" required>
+                  <option value="">Select country</option>
+                  <option value="AU">Australia</option>
+                  <option value="US">United States</option>
+                  <option value="GB">United Kingdom</option>
+                  <option value="CA">Canada</option>
+                  <option value="NZ">New Zealand</option>
+                  <option value="OTHER">Other</option>
+                </select>
+                <p class="field-error" data-error-for="country"></p>
+              </div>
+
+              <div style="margin-top: 1.5rem; padding: 1rem; background: #f9fafb; border-radius: 0.5rem; border: 1px solid #e5e7eb;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <span>Deposit Amount:</span>
+                  <span style="font-weight: 700;">$500.00 AUD</span>
+                </div>
+                <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">
+                  This is a deposit payment. The remaining balance will be due before departure.
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full-width" style="margin-top: 1.5rem;">
+                Pay Deposit $500.00
+              </button>
+
+              <p class="smallprint" style="margin-top: 1rem;">
+                Your payment is secure and encrypted. By proceeding, you agree to our terms and conditions.
+              </p>
+
+              <div id="payment-success" class="booking-success" hidden>
+                <h2>Payment Successful!</h2>
+                <p>
+                  Your deposit payment of <strong>$500.00 AUD</strong> has been processed successfully.
+                  A confirmation email has been sent to <strong id="success-email"></strong>.
+                </p>
+                <p>
+                  <a href="index.html" class="btn btn-primary" style="margin-top: 1rem;">Return to Home</a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© 2026 Bookingin</span>
+        <span>Itinerary branding and details based on Holidaysify™ promotions.</span>
+      </div>
+    </footer>
+
+    <script>
+      // Load booking data from URL parameters or localStorage
+      const urlParams = new URLSearchParams(window.location.search);
+      const bookingData = {};
+      
+      // Try to get from URL params first
+      if (urlParams.get('itinerary')) {
+        bookingData.tripName = urlParams.get('itinerary');
+        bookingData.firstName = urlParams.get('firstName') || '';
+        bookingData.lastName = urlParams.get('lastName') || '';
+        bookingData.email = urlParams.get('email') || '';
+        bookingData.phone = urlParams.get('phone') || '';
+        bookingData.itineraryId = urlParams.get('itineraryId') || '';
+      } else {
+        // Try to get from localStorage (last booking)
+        try {
+          const enquiries = JSON.parse(localStorage.getItem('bookingin_enquiries') || '[]');
+          if (enquiries.length > 0) {
+            const lastBooking = enquiries[enquiries.length - 1];
+            bookingData.tripName = lastBooking.tripName || '';
+            bookingData.firstName = lastBooking.firstName || '';
+            bookingData.lastName = lastBooking.lastName || '';
+            bookingData.email = lastBooking.email || '';
+            bookingData.phone = lastBooking.phone || '';
+          }
+        } catch (e) {
+          console.error('Error loading booking data:', e);
+        }
+      }
+
+      // Load itinerary details if we have an ID
+      if (bookingData.itineraryId || urlParams.get('itineraryId')) {
+        const itineraryId = bookingData.itineraryId || urlParams.get('itineraryId');
+        fetch('itineraries.json')
+          .then(response => response.json())
+          .then(data => {
+            const itinerary = data.itineraries.find(item => item.id === itineraryId);
+            if (itinerary) {
+              document.getElementById('summary-itinerary').textContent = itinerary.name;
+              document.getElementById('summary-travel-window').textContent = itinerary.travelWindow;
+              document.getElementById('itinerary-link').href = `itinerary-viewer.html?id=${itineraryId}`;
+              document.getElementById('itinerary-link').textContent = itinerary.name;
+            }
+          })
+          .catch(error => console.error('Error loading itinerary:', error));
+      }
+
+      // Update summary with booking data
+      if (bookingData.tripName) {
+        document.getElementById('summary-itinerary').textContent = bookingData.tripName;
+      }
+      if (bookingData.firstName && bookingData.lastName) {
+        document.getElementById('summary-name').textContent = `${bookingData.firstName} ${bookingData.lastName}`;
+      }
+      if (bookingData.email) {
+        document.getElementById('summary-email').textContent = bookingData.email;
+      }
+      if (bookingData.phone) {
+        document.getElementById('summary-phone').textContent = bookingData.phone;
+      }
+
+      // Card number formatting
+      document.getElementById('card-number')?.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\s/g, '');
+        let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+        if (formattedValue.length <= 19) {
+          e.target.value = formattedValue;
+        }
+      });
+
+      // Expiry date formatting
+      document.getElementById('expiry-date')?.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length >= 2) {
+          value = value.substring(0, 2) + '/' + value.substring(2, 4);
+        }
+        e.target.value = value;
+      });
+
+      // CVV formatting (numbers only)
+      document.getElementById('cvv')?.addEventListener('input', function(e) {
+        e.target.value = e.target.value.replace(/\D/g, '');
+      });
+
+      // Payment form submission
+      document.getElementById('payment-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const cardNumber = formData.get('cardNumber').replace(/\s/g, '');
+        const expiryDate = formData.get('expiryDate');
+        const cvv = formData.get('cvv');
+        const cardName = formData.get('cardName');
+        
+        // Basic validation
+        if (cardNumber.length < 13 || cardNumber.length > 19) {
+          alert('Please enter a valid card number');
+          return;
+        }
+        if (!/^\d{2}\/\d{2}$/.test(expiryDate)) {
+          alert('Please enter a valid expiry date (MM/YY)');
+          return;
+        }
+        if (cvv.length < 3 || cvv.length > 4) {
+          alert('Please enter a valid CVV');
+          return;
+        }
+
+        // Simulate payment processing
+        const successEl = document.getElementById('payment-success');
+        if (successEl) {
+          successEl.hidden = false;
+          document.getElementById('success-email').textContent = bookingData.email || 'your email';
+          this.style.display = 'none';
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
+          // Store payment record
+          try {
+            const paymentData = {
+              bookingData: bookingData,
+              paymentAmount: 500.00,
+              currency: 'AUD',
+              timestamp: new Date().toISOString()
+            };
+            const payments = JSON.parse(localStorage.getItem('bookingin_payments') || '[]');
+            payments.push(paymentData);
+            localStorage.setItem('bookingin_payments', JSON.stringify(payments));
+          } catch (err) {
+            console.warn('Unable to store payment record:', err);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+

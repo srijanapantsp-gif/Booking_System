@@ -1,0 +1,113 @@
+{
+  "itineraries": [
+    {
+      "id": "mediterranean-marvels",
+      "name": "Mediterranean Marvels - Web Promo",
+      "url": "https://holidaysify.com.au/discover/trip/6yw9rqurqsfzqz2a9d6u8y53tk3gxea",
+      "travelWindow": "Apr – Oct 2026 / 2027"
+    },
+    {
+      "id": "classic-european-river-cruise",
+      "name": "Classic European-River Cruise",
+      "url": "https://holidaysify.com.au/discover/trip/classic-european-river-cruise",
+      "travelWindow": "Apr – Oct 2026 / 2027"
+    },
+    {
+      "id": "rhine-river-cruise",
+      "name": "Rhine River Cruise",
+      "url": "https://holidaysify.com.au/discover/trip/rhine-river-cruise",
+      "travelWindow": "Apr – Oct 2026 / 2027"
+    },
+    {
+      "id": "tulip-time-river-cruise",
+      "name": "Tulip Time River Cruise with Amsterdam and Paris",
+      "url": "https://holidaysify.com.au/discover/trip/tulip-time-river-cruise",
+      "travelWindow": "European Spring"
+    },
+    {
+      "id": "grand-mediterranean",
+      "name": "Grand Mediterranean",
+      "url": "https://holidaysify.com.au/discover/trip/grand-mediterranean",
+      "travelWindow": "Apr – Oct 2026 / 2027"
+    },
+    {
+      "id": "mega-mediterranean",
+      "name": "Mega Mediterranean",
+      "url": "https://holidaysify.com.au/discover/trip/mega-mediterranean",
+      "travelWindow": "Mar 2026 / 2027"
+    },
+    {
+      "id": "ritz-carlton-yacht",
+      "name": "Ritz Carlton Yacht Collection",
+      "url": "https://holidaysify.com.au/discover/trip/ritz-carlton-yacht",
+      "travelWindow": "Summer 2026 / 2027"
+    },
+    {
+      "id": "norway-intensive",
+      "name": "Norway Intensive - Azamara",
+      "url": "https://holidaysify.com.au/discover/trip/norway-intensive",
+      "travelWindow": "Apr – Oct 2026 / 2027"
+    },
+    {
+      "id": "western-canada-rockies",
+      "name": "Western Canada & Rockies with Alaska Cruise",
+      "url": "https://holidaysify.com.au/discover/trip/western-canada-rockies",
+      "travelWindow": "Multiple Departures"
+    },
+    {
+      "id": "grand-continental-rail",
+      "name": "Grand Continental Rail Journey - Rome to London",
+      "url": "https://holidaysify.com.au/discover/trip/grand-continental-rail",
+      "travelWindow": "Enquire Now"
+    },
+    {
+      "id": "great-canadian-rail",
+      "name": "Great Canadian Rail Journey with Alaska",
+      "url": "https://holidaysify.com.au/discover/trip/great-canadian-rail",
+      "travelWindow": "Multiple Departures"
+    },
+    {
+      "id": "antarctica-fly-cruise",
+      "name": "Antarctica Fly & Cruise",
+      "url": "https://holidaysify.com.au/discover/trip/antarctica-fly-cruise",
+      "travelWindow": "Enquire Now"
+    },
+    {
+      "id": "ghan-adelaide-darwin",
+      "name": "The Ghan: Adelaide to Darwin",
+      "url": "https://holidaysify.com.au/discover/trip/ghan-adelaide-darwin",
+      "travelWindow": "Platinum Cabin"
+    },
+    {
+      "id": "discover-adelaide-darwin",
+      "name": "Discover Adelaide and Darwin",
+      "url": "https://holidaysify.com.au/discover/trip/discover-adelaide-darwin",
+      "travelWindow": "2026 / 2027"
+    },
+    {
+      "id": "outback-to-ocean",
+      "name": "Outback to Ocean: Rail & Sail",
+      "url": "https://holidaysify.com.au/discover/trip/outback-to-ocean",
+      "travelWindow": "The Ghan + Kimberley Expedition"
+    },
+    {
+      "id": "tale-of-two-cities",
+      "name": "Tale of Two Cities Perth to Sydney",
+      "url": "https://holidaysify.com.au/discover/trip/tale-of-two-cities",
+      "travelWindow": "Gold Twin Cabin"
+    },
+    {
+      "id": "indian-pacific",
+      "name": "Indian Pacific: Perth to Sydney",
+      "url": "https://holidaysify.com.au/discover/trip/indian-pacific",
+      "travelWindow": "Multiple Departures"
+    },
+    {
+      "id": "northern-explorer",
+      "name": "Northern Explorer with Sydney Stay - Cunard",
+      "url": "https://holidaysify.com.au/discover/trip/northern-explorer",
+      "travelWindow": "Sep / Oct 2026 / 2027"
+    }
+  ]
+}
+

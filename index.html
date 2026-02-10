@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Bookingin – Holidaysify Mediterranean Marvels</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <span class="brand-main">Bookingin</span>
+                <span class="brand-sub">for Holidaysify™</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link is-active">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-inner">
+                <div class="hero-copy">
+                    <h1>Plan &amp; Book Your Holidaysify™ Journey</h1>
+                    <p>
+                        Browse all available itineraries from Holidaysify™. Each itinerary
+                        includes a <strong>BOOK</strong> button so you can easily submit
+                        your booking request.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="https://holidaysify.com.au/" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-outline">
+                            Visit Holidaysify.com.au
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Available Itineraries</h2>
+                <p class="section-lead">
+                    Click on any itinerary to view details and book your journey.
+                </p>
+                <div id="itineraries-list" class="itineraries-grid">
+                    <p>Loading itineraries...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>How it works</h2>
+                <ol class="steps">
+                    <li>Browse and select an itinerary below.</li>
+                    <li>Review the day‑by‑day schedule and inclusions.</li>
+                    <li>Click the <strong>BOOK</strong> button (top-left of the page).</li>
+                    <li>Fill in your traveller details and submit your request.</li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <span>© 2026 Bookingin · Not affiliated with Travefy, Inc.</span>
+            <span>
+                Powered by Holidaysify™ itineraries on
+                <a href="https://holidaysify.com.au/" target="_blank" rel="noopener noreferrer">Holidaysify.com.au</a>
+            </span>
+        </div>
+    </footer>
+    <script>
+        // Load and display all itineraries
+        fetch('itineraries.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('itineraries-list');
+                container.innerHTML = '';
+
+                data.itineraries.forEach(itinerary => {
+                    const card = document.createElement('div');
+                    card.className = 'itinerary-card';
+                    card.innerHTML = `
+              <h3>${itinerary.name}</h3>
+              <p class="itinerary-window">${itinerary.travelWindow}</p>
+              <div class="itinerary-actions">
+                <a href="itinerary-viewer.html?id=${itinerary.id}" class="btn btn-primary">
+                  View &amp; Book Now
+                </a>
+              </div>
+            `;
+                    container.appendChild(card);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading itineraries:', error);
+                document.getElementById('itineraries-list').innerHTML =
+                    '<p>Error loading itineraries. Please refresh the page.</p>';
+            });
+    </script>
+</body>
+
+</html>

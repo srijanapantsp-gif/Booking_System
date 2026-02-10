@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Itinerary Viewer – Bookingin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="full-iframe-shell">
+    <div class="iframe-shell">
+      <div class="iframe-book-button">
+        <a href="#" id="book-button-link" class="btn btn-primary">Book Now</a>
+      </div>
+      <div id="iframe-loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5; color: #6b7280; font-size: 1rem;">
+        Loading itinerary...
+      </div>
+      <iframe
+        id="itinerary-iframe"
+        title="Itinerary Viewer (Holidaysify / Travefy)"
+        src=""
+        allowfullscreen
+        allow="fullscreen"
+        style="display: block;"
+        onload="document.getElementById('iframe-loading').style.display='none';"
+      ></iframe>
+    </div>
+    <script>
+      // Get itinerary ID from URL parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const itineraryId = urlParams.get('id') || 'mediterranean-marvels';
+      
+      // Get Book Now button element
+      const bookLink = document.getElementById('book-button-link');
+      
+      // Set default link immediately (will be updated when data loads)
+      bookLink.href = `book.html?id=${itineraryId}`;
+      
+      // Load itineraries configuration
+      fetch('itineraries.json')
+        .then(response => response.json())
+        .then(data => {
+          const itinerary = data.itineraries.find(item => item.id === itineraryId) || data.itineraries[0];
+          
+          // Set iframe source (load immediately)
+          const iframe = document.getElementById('itinerary-iframe');
+          iframe.src = itinerary.url;
+          
+          // Show loading indicator
+          document.getElementById('iframe-loading').style.display = 'block';
+          
+          // Hide loading when iframe loads
+          iframe.onload = function() {
+            document.getElementById('iframe-loading').style.display = 'none';
+          };
+          
+          // Set page title
+          document.title = itinerary.name + ' – Bookingin';
+          
+          // Update Book Now button link with correct itinerary ID
+          bookLink.href = `book.html?id=${itineraryId}`;
+          bookLink.textContent = 'Book Now';
+          
+          // Ensure button is visible and clickable
+          bookLink.style.display = 'inline-flex';
+        })
+        .catch(error => {
+          console.error('Error loading itinerary:', error);
+          // Fallback to Mediterranean Marvels
+          const iframe = document.getElementById('itinerary-iframe');
+          iframe.src = 'https://holidaysify.com.au/discover/trip/6yw9rqurqsfzqz2a9d6u8y53tk3gxea';
+          bookLink.href = 'book.html?id=mediterranean-marvels';
+          bookLink.textContent = 'Book Now';
+        });
+    </script>
+  </body>
+</html>
+

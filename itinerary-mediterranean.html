@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Mediterranean Marvels – Web Promo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="full-iframe-shell">
+    <div class="iframe-shell">
+        <div class="iframe-book-button">
+            <a href="book.html?id=mediterranean-marvels" class="btn btn-primary">Book Now</a>
+        </div>
+        <div id="iframe-loading"
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5; color: #6b7280; font-size: 1rem;">
+            Loading itinerary...
+        </div>
+        <iframe title="Mediterranean Marvels – Web Promo (Holidaysify / Travefy)"
+            src="https://holidaysify.com.au/discover/trip/6yw9rqurqsfzqz2a9d6u8y53tk3gxea" allowfullscreen
+            allow="fullscreen" style="display: block;"
+            onload="document.getElementById('iframe-loading').style.display='none';"></iframe>
+    </div>
+</body>
+
+</html>
